@@ -1,60 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <!-- <img src="../../assets/icons/favicon.png" width="40px" style="display:inline-block" /> -->
-    <ion-title> Jet Foods</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row id="store-locator-row">
-      <ion-col size="12">
-        <ion-card>
-          <ion-item color="tertiary"lines="none">
-            <ion-icon name="location-outline" slot="start"></ion-icon>
-            <ion-label>
-              <h2>Store Locator</h2>
-            </ion-label>
-          </ion-item>
-
-          <ion-card-content class="ion-no-padding">
-            <div class="map" #map></div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row id="featured-coupons-row">
-      <ion-col size="12">
-        <ion-card>
-          <ion-item href="#" class="ion-activated">
-            <ion-icon name="wifi" slot="start"></ion-icon>
-            <ion-label>Card Link Item 1 activated</ion-label>
-          </ion-item>
-
-          <ion-item href="#">
-            <ion-icon name="wine" slot="start"></ion-icon>
-            <ion-label>Card Link Item 2</ion-label>
-          </ion-item>
-
-          <ion-item class="ion-activated">
-            <ion-icon name="warning" slot="start"></ion-icon>
-            <ion-label>Card Button Item 1 activated</ion-label>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="walk" slot="start"></ion-icon>
-            <ion-label>Card Button Item 2</ion-label>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row id="gas-station-pricing-row">
-      <ion-col size="12">
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="overview">
+      <ion-label>Home</ion-label>
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="coupons">
+      <ion-label>Coupons</ion-label>
+      <ion-icon name="pricetags-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="recipes">
+      <ion-label>Featured Recipes</ion-label>
+      <ion-icon name="restaurant-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
