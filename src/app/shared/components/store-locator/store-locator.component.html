@@ -1,4 +1,37 @@
-<div class="ion-padding">
-  <ion-input type="text" placeholder="Enter ZIP, City or State" style="border: 1px solid black"></ion-input>
+<div class="ion-padding background-tertiary">
+  <ion-item>
+    <ion-input placeholder="Enter ZIP, City or State" class="location-input"></ion-input>
+    <ion-icon name="search" slot="start"></ion-icon>
+  </ion-item>
 </div>
 <div class="map" #map></div>
+<div *ngIf='showNearbyStoreList' class="ion-no-padding">
+  <div style="background: rgb(216, 216, 216)">
+    <p class="padding-small">Nearby Stores</p>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail>
+        <img src="https://img.etimg.com/thumb/msid-75214721,width-1200,height-900/industry/services/retail/future-group-negotiates-rents-for-its-1700-stores.jpg" />
+      </ion-thumbnail>
+      <ion-label class="ion-padding">
+        <h1>Carol Stream</h1>
+        <p>7:00AM - 9:00PM Daily</p>
+        <p style="color:green">Open now</p>
+        <p>1 mi away</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail>
+        <img src="https://img.etimg.com/thumb/msid-75214721,width-1200,height-900/industry/services/retail/future-group-negotiates-rents-for-its-1700-stores.jpg" />
+      </ion-thumbnail>
+      <ion-label class="ion-padding">
+        <h1>Park Forest</h1>
+        <p>7:00AM - 9:00PM Daily</p>
+        <p style="color:green">Open now</p>
+        <p>10 mi away</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>
+

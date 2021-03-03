@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .map {
   height: 250px;
   width:100%;
@@ -12,4 +16,9 @@
 
 .store-finder-input-container{
   background: #65C9CE;
+}
+
+.location-input {
+  background:white;
+  border-radius: 5px;
 }

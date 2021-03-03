@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
   },
+  {
+    path: 'store-locator',
+    loadChildren: () => import('./store-locator/store-locator.module').then( m => m.StoreLocatorPageModule)
+  },
 ];
 
 @NgModule({

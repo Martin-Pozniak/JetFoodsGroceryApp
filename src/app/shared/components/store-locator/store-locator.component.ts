@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-store-locator',
@@ -7,15 +7,17 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 })
 export class StoreLocatorComponent implements AfterViewInit {
 
+  // MEMBERS
   @ViewChild('map') mapElementRef: ElementRef;
 
-  // MEMBERS
-  parkForestLocation = { lat: 41.48169, lng: -87.68463 };
-  carolStreamLocation = { lat: 41.9125, lng: -88.1348 };
-  harveyLocation = { lat: 41.6100, lng: -87.6467 };
-  napervilleLocation = { lat: 41.7508, lng: -88.1535 };
-  rockfordLocation = { lat: 41.2711, lng: -89.0940 };
-  stPaulLocation = { lat: 44.9537, lng: -93.0900 };
+  @Input() showNearbyStoreList: boolean = true;
+
+  private parkForestLocation = { lat: 41.48169, lng: -87.68463 };
+  private carolStreamLocation = { lat: 41.9125, lng: -88.1348 };
+  private harveyLocation = { lat: 41.6100, lng: -87.6467 };
+  private napervilleLocation = { lat: 41.7508, lng: -88.1535 };
+  private rockfordLocation = { lat: 41.2711, lng: -89.0940 };
+  private stPaulLocation = { lat: 44.9537, lng: -93.0900 };
 
   constructor( private renderer: Renderer2 ) { }
 
