@@ -1,0 +1,22 @@
+<ion-card class="ion-no-padding">
+  <ion-card-content class="ion-no-padding">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col >
+          <img class="coupon-image" src="{{coupon.imageUrl}}" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label>
+              <h2>{{coupon.name}}</h2>
+              <p style="color:green">{{coupon.shortDescription}}</p>
+              <p>Expires: {{coupon.expirationDate | date }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
