@@ -1,20 +1,21 @@
-<ion-card class="ion-no-padding">
+<ion-card [ngClass]="{'ion-no-padding' : isSlideImage}" >
   <ion-card-content class="ion-no-padding">
-    <ion-grid class="ion-no-padding">
+    <ion-grid [ngClass]="{'ion-no-padding' : isSlideImage}">
       <ion-row>
         <ion-col >
-          <img class="coupon-image" src="{{coupon.imageUrl}}" />
+          <img [ngClass]="{'slide-image' : isSlideImage}" src="{{coupon.imageUrl}}" />
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="ion-padding">
         <ion-col>
-          <ion-item lines="none">
-            <ion-label>
+          <ion-item *ngIf="!showButton" lines="none">
+            <ion-label class="ion-text-center">
               <h2>{{coupon.name}}</h2>
               <p style="color:green">{{coupon.shortDescription}}</p>
               <p>Expires: {{coupon.expirationDate | date }}</p>
             </ion-label>
           </ion-item>
+          <ion-button *ngIf="showButton" class="ion-padding" expand="block" >Claim</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -7,20 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { OverviewPageRoutingModule } from './overview-routing.module';
 
 import { OverviewPage } from './overview.page';
-import { StoreLocatorComponent } from 'src/app/shared/components/store-locator/store-locator.component';
-import { CouponCardComponent } from 'src/app/shared/components/coupon-card/coupon-card.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OverviewPageRoutingModule
+    OverviewPageRoutingModule,
+    SharedModule
   ],
   declarations: [
-    OverviewPage,
-    StoreLocatorComponent,
-    CouponCardComponent
+    OverviewPage
   ]
 })
 export class OverviewPageModule {}

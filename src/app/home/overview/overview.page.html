@@ -20,10 +20,9 @@
   <ion-grid>
     <ion-row id="featured-coupons-row">
       <ion-col size="12" size="12" size-sm="8" offset-sm="2" class="ion-no-padding">
-        <h1 class="ion-text-center">Exclusive Offers...</h1>
         <ion-slides pager="true" [options]="slideOptions" class="ion-padding">
           <ion-slide *ngFor="let coupon of couponList" class="ion-padding">
-            <app-coupon-card [coupon]="coupon"></app-coupon-card>
+            <app-coupon-card [isSlideImage]="true" [coupon]="coupon"></app-coupon-card>
           </ion-slide>
         </ion-slides>
       </ion-col>

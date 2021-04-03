@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPage implements OnInit {
 
-  constructor() { }
+  constructor( private svcAuth: AuthService, private router: Router ) { }
 
   ngOnInit() {
+  }
+
+  public onLogin(){
+    this.svcAuth.login();
+    this.router.navigateByUrl('/home');
+  }
+
+  public onSubmit( form: NgForm ) {
+    console.log(form);
   }
 
 }

@@ -5,7 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { StoreLocatorPageRoutingModule } from './store-locator-routing.module';
 
 import { StoreLocatorPage } from './store-locator.page';
-import { StoreLocatorComponent } from '../shared/components/store-locator/store-locator.component';
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import { StoreLocatorComponent } from '../shared/components/store-locator/store-
     StoreLocatorPageRoutingModule
   ],
   declarations: [
-    StoreLocatorPage,
-    StoreLocatorComponent
+    StoreLocatorPage
   ]
 })
 export class StoreLocatorPageModule {}

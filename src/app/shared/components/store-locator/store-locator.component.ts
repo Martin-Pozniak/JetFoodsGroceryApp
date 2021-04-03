@@ -70,7 +70,7 @@ export class StoreLocatorComponent implements AfterViewInit {
 
       const script = document.createElement('script');
 
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4VYAAckFN1Khtj0XDrkMHw-jXWBkStIU';
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB7u8vfcdlVbJxj_7Dzdex7zAptmQKBRYI';
       script.async = true;
       script.defer = true;
 

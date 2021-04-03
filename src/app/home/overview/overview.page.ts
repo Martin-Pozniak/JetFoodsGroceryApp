@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Coupon } from 'src/app/models/coupon.model';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-overview',
@@ -8,10 +10,7 @@ import { Coupon } from 'src/app/models/coupon.model';
 })
 export class OverviewPage implements OnInit {
 
-  public user = {
-    firstName: "Martin",
-    mainStore: "Carol Stream"
-  }
+  public user: User = this.svcUser.getCurrentUser();
 
   public couponList: Coupon[] = [
     new Coupon( 'c1',
@@ -52,7 +51,7 @@ export class OverviewPage implements OnInit {
     spaceBetween: 0
   };
 
-  constructor() { }
+  constructor( private svcUser: UserService ) { }
 
   ngOnInit() {
   }

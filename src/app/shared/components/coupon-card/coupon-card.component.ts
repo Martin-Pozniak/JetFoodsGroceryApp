@@ -9,8 +9,15 @@ import { Coupon } from 'src/app/models/coupon.model';
 export class CouponCardComponent implements OnInit {
 
   @Input() coupon: Coupon;
+  @Input() isSlideImage: boolean;
+  @Input() showButton: boolean;
 
-  constructor() { }
+  constructor() {
+
+    this.isSlideImage = false;
+    this.showButton = false;
+
+  }
 
   ngOnInit() {}
 

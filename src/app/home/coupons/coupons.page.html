@@ -10,8 +10,26 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar *ngIf="isAdmin(currentUser)" color="secondary">
+    Admin controls
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Coupons Page</h1>
+  <ion-row>
+    <ion-col>
+      <h1 class="ion-text-center">Great savings, always...</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-list>
+        <app-coupon-card class="ion-padding"
+                         *ngFor="let activeCoupon of lstLoadedActiveCoupons"
+                         [showButton]="true"
+                         [coupon]="activeCoupon">
+        </app-coupon-card>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

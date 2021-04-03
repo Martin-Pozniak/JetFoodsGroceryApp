@@ -6,8 +6,8 @@ export class Coupon {
     public shortDescription: string,
     public longDescription: string,
     public imageUrl: string,
-    public categories: string[],
-    public validLocations: string[],
+    public categoryIds: string[],
+    public validLocationIds: string[],
     public expirationDate: Date,
   ) {}
 

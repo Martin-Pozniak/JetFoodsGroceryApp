@@ -5,7 +5,8 @@
         <img src="../../assets/icons/favicon.png" />
         <ion-label class="ion-padding">
           <h1>Jet Foods</h1>
-          <p>Hello, {{currentUser ? currentUser.firstName : 'Guest'}}</p>
+          <!-- <p>Hello, {{currentUser ? currentUser.firstName : 'Guest'}}</p> -->
+          <p>Hello, Guest</p>
         </ion-label>
       </ion-item>
     </ion-header>
@@ -52,7 +53,7 @@
           </ion-item>
           <hr class="menu-line-break">
 
-          <ion-item class="ion-text-center" lines="none">
+          <ion-item class="ion-text-center" lines="none" (click)="onLogout()">
             <ion-label color="danger">Log Out</ion-label>
           </ion-item>
         </ion-list>
