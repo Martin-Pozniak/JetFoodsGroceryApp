@@ -10,8 +10,15 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar *ngIf="isAdmin(currentUser)" color="secondary">
-    Admin controls
+  <ion-toolbar *ngIf="isAdmin(currentUser)" color="tertiary">
+    <ion-button class="ion-margin" [routerLink]="'create-coupon'">
+      Add
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+    <ion-button class="ion-margin" color="danger">
+      Remove
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

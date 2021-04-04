@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { StoreLocatorPageRoutingModule } from './store-locator-routing.module';
 
 import { StoreLocatorPage } from './store-locator.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StoreLocatorPageRoutingModule
+    StoreLocatorPageRoutingModule,
+    SharedModule
   ],
   declarations: [
     StoreLocatorPage

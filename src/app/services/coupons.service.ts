@@ -13,7 +13,7 @@ export class CouponsService {
                 'When you spend $50 you can get $5 back!',
                 'https://www.kiki-furniture.com/cms/userfiles/files/Instore-Coupon-50off(1).png',
                 null,
-                ['Carol Stream'],
+                ['Carol Stream', 'Rockford','St. Paul'],
                 new Date(2021,3,31) ),
     new Coupon( 'c2',
                 'Buy 1 Get 1',

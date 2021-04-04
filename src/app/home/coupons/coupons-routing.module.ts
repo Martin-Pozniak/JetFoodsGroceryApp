@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: CouponsPage
+  },
+  {
+    path: 'coupons-page',
+    loadChildren: () => import('./create-coupon/create-coupon.module').then( m => m.CreateCouponPageModule)
   }
+
 ];
 
 @NgModule({

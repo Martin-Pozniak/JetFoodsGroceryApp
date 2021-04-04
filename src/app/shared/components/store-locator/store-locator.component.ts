@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-store-locator',
@@ -70,7 +71,7 @@ export class StoreLocatorComponent implements AfterViewInit {
 
       const script = document.createElement('script');
 
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB7u8vfcdlVbJxj_7Dzdex7zAptmQKBRYI';
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsAPIKey}`;
       script.async = true;
       script.defer = true;
 

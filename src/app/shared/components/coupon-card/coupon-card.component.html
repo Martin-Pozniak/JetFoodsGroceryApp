@@ -15,7 +15,7 @@
               <p>Expires: {{coupon.expirationDate | date }}</p>
             </ion-label>
           </ion-item>
-          <ion-button *ngIf="showButton" class="ion-padding" expand="block" >Claim</ion-button>
+          <ion-button *ngIf="showButton" class="ion-padding" expand="block" (click)="openCouponDetailsModal()">Claim</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -19,7 +19,7 @@ const routes: Routes = [
         path: 'coupons', children: [
           {
             path:'',
-            loadChildren: () => import('./coupons/coupons.module').then( m => m.CouponsPageModule)
+            loadChildren: () => import('./coupons/coupons.module').then( m => m.CouponsPageModule),
           }
         ]
       },

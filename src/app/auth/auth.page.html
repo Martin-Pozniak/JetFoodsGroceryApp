@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{ isLogin ? 'Login' : 'Create an Account'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,9 +12,10 @@
       </ion-col>
     </ion-row>
 
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <ion-row>
         <ion-col size-sm="8" offset-sm="2">
+          <h3 class="ion-text-center">{{isLogin ? 'Log into your account' : 'Create a new account'}}</h3>
           <ion-list>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
@@ -24,14 +25,22 @@
               <ion-label position="floating">Password</ion-label>
               <ion-input type="password" ngModel name="password" required minlength="6"></ion-input>
             </ion-item>
+            <ion-item *ngIf="!isLogin">
+              <ion-label position="floating">Confirm Password</ion-label>
+              <ion-input type="password" ngModel name="passwordConfirmation" required minlength="6"></ion-input>
+            </ion-item>
           </ion-list>
-          <ion-button class="ion-margin" expand="block" (click)="onLogin()" type="submit">Sign in</ion-button>
+          <ion-button class="ion-margin" expand="block" [disabled]="!form.valid" type="submit">{{ isLogin ? 'Sign in' : 'Create Account'}}</ion-button>
           <div class="ion-text-center">
-            <p>Don't have an account?</p>
-            <p><a href="/create-account">Create One</a> or <a>Continue as Guest...</a></p>
+            <div *ngIf="isLogin">
+              <p>Don't have an account?</p>
+              <p><a (click)="isLogin = !isLogin">Create One</a> or <a>Continue as Guest...</a></p>
+            </div>
+            <p *ngIf="!isLogin">Already have an account? <a (click)="isLogin = !isLogin">Sign In</a></p>
           </div>
         </ion-col>
       </ion-row>
     </form>
+
   </ion-grid>
 </ion-content>

@@ -22,7 +22,8 @@ const routes: Routes = [
     path: 'store-locator',
     loadChildren: () => import('./store-locator/store-locator.module').then( m => m.StoreLocatorPageModule),
     canLoad: [AuthGuard]
-  },
+  }
+
 ];
 
 @NgModule({
