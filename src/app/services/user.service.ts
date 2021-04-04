@@ -15,7 +15,7 @@ export class UserService {
     return this._currentUser;
   }
 
-  public isAdmin ( user:User ): boolean {
+  public isAdmin ( user: User ): boolean {
     return user.roles.includes('admin');
   }
 

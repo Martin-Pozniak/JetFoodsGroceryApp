@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { AuthResponseData, AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,22 @@ export class AuthPage implements OnInit {
                private ctrlAlert: AlertController,
                private ctrlLoading: LoadingController ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+  }
+
+  public onAnonymousLogin() {
+
+    this.svcAuth
+      .anonymousLogin()
+      .subscribe( resData => {
+        console.log("Anonymous Login");
+        console.log(resData);
+        this.router.navigateByUrl("/home");
+      },
+      errorResp => {
+        this.showAlert( errorResp.error.error.message );
+      });
+
   }
 
   public onSubmit( form: NgForm ) {
@@ -29,6 +45,9 @@ export class AuthPage implements OnInit {
 
     const email: string = form.value.email;
     const password: string = form.value.password;
+    const firstName: string = form.value.firstName;
+    const lastName: string = form.value.lastName;
+    const birthday: Date = form.value.birthday;
 
     if( form.value.passwordConfirmation !== undefined ) {
 
@@ -41,67 +60,60 @@ export class AuthPage implements OnInit {
     this.ctrlLoading
       .create({
         keyboardClose: true,
-        message: 'Working...'
+        message: 'Working on it...'
       })
       .then( loadingEl => {
 
+        let authObs: Observable<AuthResponseData>;
         loadingEl.present();
 
         if ( this.isLogin ) {
-
-          this.svcAuth
-            .login( email, password )
-            .subscribe( resData => {
-              console.log("Login");
-              console.log(resData);
-            },
-            errorResp => {
-
-              loadingEl.dismiss();
-              const errCode = errorResp.error.error.message;
-
-              let message = "We're sorry your email/password combination was incorrect or not found."
-
-              this.showAlert(message);
-
-            });
-
+          authObs = this.svcAuth.login(email, password);
         }
         else {
+          authObs = this.svcAuth.createAccount( firstName, lastName, email, password, birthday )
+        }
 
-          this.svcAuth
-            .createAccount( email, password )
-            .subscribe( resData => {
-              console.log("Sign Up");
-              console.log(resData);
-            },
-            errorResp => {
+        authObs
+          .subscribe( resData => {
 
-              loadingEl.dismiss();
+            console.log(resData);
+            loadingEl.dismiss();
 
-              const errCode = errorResp.error.error.message;
+            if ( this.isLogin ) {
+              this.router.navigateByUrl('/home');
+            }
+            else {
+              this.isLogin = true;
+              form.resetForm();
+            }
 
-              let message = "We're sorry, your sign up attempt didn't quite work.";
+          },
+          errorResp => {
 
-              if (errCode === 'EMAIL_EXISTS'){
+            const errCode = errorResp.error.error.message;
+            let message = "Woops...something went wrong.";
+
+            loadingEl.dismiss();
+
+            if ( this.isLogin ){
+              message = "We're sorry your email/password combination was incorrect or not found."
+            }
+            else {
+
+              message = "We're sorry, your sign up attempt didn't quite work.";
+
+              if ( errCode === 'EMAIL_EXISTS' ) {
                 message = 'This email address already exists. Try signing in instead.'
               }
 
-              this.showAlert( message );
+            }
 
-            });
+            this.showAlert(message);
 
-          this.isLogin = true;
+          });
 
-          form.resetForm();
-
-          loadingEl.dismiss();
-
-        }
-
-      })
-
-    console.log(form);
+      });
 
   }
 

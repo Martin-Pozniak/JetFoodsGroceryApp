@@ -6,9 +6,9 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
+    <ion-row class="ion-padding">
       <ion-col size="4" offset="4" size-sm="4" offset-sm="4">
-        <ion-img src="../../assets/icons/favicon.png"></ion-img>
+        <ion-img src="../../assets/icons/Jet-Foods-Logo-Small.png"></ion-img>
       </ion-col>
     </ion-row>
 
@@ -17,9 +17,29 @@
         <ion-col size-sm="8" offset-sm="2">
           <h3 class="ion-text-center">{{isLogin ? 'Log into your account' : 'Create a new account'}}</h3>
           <ion-list>
+              <ion-grid *ngIf="!isLogin">
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                    <ion-label position="floating">First Name</ion-label>
+                    <ion-input type="text" ngModel name="firstName" required></ion-input>
+                  </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Last Name</ion-label>
+                      <ion-input type="text" ngModel name="firstName" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
               <ion-input type="email" ngModel name="email" required email></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!isLogin">
+              <ion-label position="floating">Birthday</ion-label>
+              <ion-datetime ngModel name="birthday"></ion-datetime>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
@@ -30,11 +50,21 @@
               <ion-input type="password" ngModel name="passwordConfirmation" required minlength="6"></ion-input>
             </ion-item>
           </ion-list>
-          <ion-button class="ion-margin" expand="block" [disabled]="!form.valid" type="submit">{{ isLogin ? 'Sign in' : 'Create Account'}}</ion-button>
+          <ion-item *ngIf="!isLogin" lines="none">
+            <ion-label class="ion-text-wrap">Recieve new coupons and news to your email?</ion-label>
+            <ion-toggle slot="start" ngModel name="newsletterSubscribe" checked></ion-toggle>
+          </ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-button class="ion-margin" expand="block" [disabled]="!form.valid" type="submit">{{ isLogin ? 'Sign in' : 'Create Account'}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
           <div class="ion-text-center">
             <div *ngIf="isLogin">
               <p>Don't have an account?</p>
-              <p><a (click)="isLogin = !isLogin">Create One</a> or <a>Continue as Guest...</a></p>
+              <p><a (click)="isLogin = !isLogin">Create One</a> or <a (click)="onAnonymousLogin()">Continue as Guest...</a></p>
             </div>
             <p *ngIf="!isLogin">Already have an account? <a (click)="isLogin = !isLogin">Sign In</a></p>
           </div>
@@ -44,3 +74,9 @@
 
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <p class="ion-text-center">Copyright <span>&#169;</span> 2021 - Jet Foods LLC</p>
+  </ion-toolbar>
+</ion-footer>

@@ -5,7 +5,7 @@
         <ion-icon name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">{{coupon.name}}</ion-title>
+    <ion-title>Coupon Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,22 +17,23 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="8" offset="2">
-        <p class="ion-text-center">Present this coupon to the cashier at a valid location to redeem.</p>
+      <ion-col size="10" offset="1" class="ion-text-center">
+        <p>Present this coupon code to the cashier at a valid location to redeem.</p>
+        <h1 style="font-size: 50px;">{{coupon.cashierCode}}</h1>
+        <p style="color: rgb(52, 185, 52)">Valid Until: {{coupon.expirationDate | date}}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label>
-            <h1>Details</h1>
-            <p>{{coupon.name}}</p>
-            <p>{{coupon.longDescription}}</p>
+            <h1>Description</h1>
+            <h2>{{coupon.longDescription}}</h2>
           </ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label>
-            <h2>Valid at the following locations</h2>
+            <h1>Valid Locations:</h1>
             <ul>
               <li *ngFor="let location of getValidLocations(coupon)">
                 <p>{{location}}</p>
@@ -42,10 +43,11 @@
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="8" offset="2">
-        <ion-button expand="block" (click)="onCloseModal()">Close</ion-button>
-      </ion-col>
-    </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="tertiary" expand="block" (click)="onCloseModal()">Close</ion-button>
+  </ion-toolbar>
+</ion-footer>
